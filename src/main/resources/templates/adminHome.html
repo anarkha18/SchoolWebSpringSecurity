@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
+  <script th:src="@{../js/jquery-3.7.1.min.js}"></script>
+  <script th:src="@{../css/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div class="container">
+  <div class="col-lg-6">
+    <h1>WELCOME ADMIN</h1>
+    <h1 th:text="'UserName: '+ ${principal.getUsername()}"></h1>
+    <p th:text="'Name: '+ ${userDetailsEntity.getName()}"></p>
+    <p th:text="'DOB: '+ ${userDetailsEntity.getDob()}"></p>
+    <p th:text="'Phone: '+ ${userDetailsEntity.getPhone()}"></p>
+    <p th:text="'Role: '+ ${principal.getAuthorities()}"></p>
+  </div>
+  <a th:href="@{/logout}">
+    <button type="button" class="btn btn-primary">Log Out</button>
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{../js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{../css/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="col-lg-6">
+        <h1>Register</h1>
+        <div th:if="${success}" class="alert alert-success text-center"
+             role="alert">
+            <p th:text="${success}"></p>
+        </div>
+        <div th:if="${error}" class="alert alert-danger text-center"
+             role="alert">
+            <p th:text="${error}"></p>
+        </div>
+        <form th:method="post" th:action="@{/register}" th:object="${UserDetailsEntity}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Enter your name">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="email" class="form-control" th:field="*{user.userName}" id="username" placeholder="Enter user name">
+                <div th:if="${#fields.hasErrors('user.userName')}" th:errors="*{user.userName}"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" th:field="*{user.password}" placeholder="Password">
+                <div th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" th:field="*{phone}" placeholder="Phone No">
+                <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+            </div>
+            <div class="form-group">
+                <label for="dob">D.O.B</label>
+                <input type="date" class="form-control" id="dob" th:field="*{dob}" placeholder="D.O.B">
+                <div th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="custom-select" id="role" th:placeholder="--" th:field="*{user.role}">
+                    <option selected value="">--</option>
+                    <option value="student">student</option>
+                    <option value="staff">staff</option>
+                </select>
+                <div th:if="${#fields.hasErrors('user.role')}" th:errors="*{user.role}"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a th:href="@{/login}">
+                <button type="button" class="btn btn-primary">Log In</button>
+            </a>
+
+<!--            <div th:if="${#fields.hasErrors()}" class="alert alert-danger text-center" role="alert">-->
+<!--                <p th:each="error : ${#fields.errors('*')}" th:text="${error}"></p>-->
+<!--            </div>-->
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
