@@ -1,2 +1,1 @@
-spring security authentication using database
-using forms
+spring security authentication using database and html form.
